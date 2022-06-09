@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CourseMaterial {
@@ -12,6 +14,12 @@ public class CourseMaterial {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long courseMaterialId;
 	private String url;
+	@OneToOne
+	@JoinColumn(
+			name = "course_id",
+			referencedColumnName = "courseId"
+			)
+	private Course course;
 
 	public long getCourseMaterialId() {
 		return courseMaterialId;
@@ -27,6 +35,14 @@ public class CourseMaterial {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 }
