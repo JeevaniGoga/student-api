@@ -25,11 +25,11 @@ public class CourseMaterialController {
 		return courseMaterialService.addCourseMaterial(coureMaterial);
 	}
 	
-	@PostMapping("/courseMaterial/{courseId}")
-	public CourseMaterial addCourseMaterialbyCourseId(@RequestBody CourseMaterial coureMaterial,
-			                                          @PathVariable Long courseId) {
-		Course course = courseservice.getCourseByID(courseId);
-		course.setCourseMaterial(coureMaterial);
-		return courseMaterialService.addCourseMaterial(coureMaterial);
-	}
+//	@PostMapping("/courseMaterial/{courseId}")
+//	public CourseMaterial addCourseMaterialbyCourseId(@RequestBody CourseMaterial coureMaterial,
+//			                                          @PathVariable Long courseId) {
+//		Course course = courseservice.getCourseByID(courseId);
+//		course.setCourseMaterial(coureMaterial);
+//		return courseMaterialService.addCourseMaterial(coureMaterial);
+//	}
 }

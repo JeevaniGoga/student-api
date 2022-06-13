@@ -34,4 +34,8 @@ public class StudentService {
 		return studentRepository.updateStudentNameByEmailId(firstName, emailId);
 	}
 
+	public Student getStudentByStudentId(Long studentId) {
+		return studentRepository.findById(studentId).get();
+	}
+
 }

@@ -1,9 +1,11 @@
 package com.kethan.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -29,6 +31,21 @@ public class Course {
 	@JsonIgnore
 	@OneToOne(mappedBy = "course")
 	private CourseMaterial courseMaterial;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(
+			name = "teacher_id",
+			referencedColumnName = "teacherId")
+	private Teacher teacher;
+	
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
 
 	public long getCourseId() {
 		return courseId;
@@ -61,7 +78,5 @@ public class Course {
 	public void setCourseMaterial(CourseMaterial courseMaterial) {
 		this.courseMaterial = courseMaterial;
 	}
-	
-	
 
 }
