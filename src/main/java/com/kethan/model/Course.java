@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Course {
@@ -22,6 +25,10 @@ public class Course {
 	private long courseId;
 	private String title;
 	private int credit;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "course")
+	private CourseMaterial courseMaterial;
 
 	public long getCourseId() {
 		return courseId;
@@ -46,5 +53,15 @@ public class Course {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
+
+	public CourseMaterial getCourseMaterial() {
+		return courseMaterial;
+	}
+
+	public void setCourseMaterial(CourseMaterial courseMaterial) {
+		this.courseMaterial = courseMaterial;
+	}
+	
+	
 
 }

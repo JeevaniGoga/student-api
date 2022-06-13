@@ -4,12 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Teacher {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(
+			name = "teacher_sequence",
+			sequenceName = "teacher_sequence",
+			allocationSize = 1
+			)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "teacher_sequence"
+			)
 	private long teacherId;
 	private String firstName;
 	private String lastName;
