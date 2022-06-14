@@ -41,16 +41,16 @@ public class Teacher {
 			    fetch = FetchType.LAZY)			     
 	private List<Student> student = new ArrayList<>();
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Course> course;	
-
-	public List<Course> getCourse() {
-		return course;
-	}
-
-	public void setCourse(List<Course> course) {
-		this.course = course;
-	}  
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private List<Course> course;	
+//
+//	public List<Course> getCourse() {
+//		return course;
+//	}
+//
+//	public void setCourse(List<Course> course) {
+//		this.course = course;
+//	}  
 
 	public List<Student> getStudent() {
 		return student;

@@ -15,29 +15,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Course {
 
 	@Id
-	
-	@SequenceGenerator(
-			name = "course_material_sequence",
-			sequenceName = "course_material_sequence",
-			allocationSize = 1
-			)
-	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE,
-			generator = "course_material_sequence")
+
+	@SequenceGenerator(name = "course_material_sequence", sequenceName = "course_material_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_material_sequence")
 	private long courseId;
 	private String title;
 	private int credit;
-	
+
 	@JsonIgnore
 	@OneToOne(mappedBy = "course")
 	private CourseMaterial courseMaterial;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(
-			name = "teacher_id",
-			referencedColumnName = "teacherId")
+	@JoinColumn(name = "teacher_id", referencedColumnName = "teacherId")
 	private Teacher teacher;
-	
 
 	public Teacher getTeacher() {
 		return teacher;
